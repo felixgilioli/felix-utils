@@ -1,4 +1,4 @@
-package br.com.felixgilioli.felixutils.collections;
+package io.github.felixgilioli.felixutils.collections;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

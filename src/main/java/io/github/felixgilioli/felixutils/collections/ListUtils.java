@@ -1,4 +1,4 @@
-package br.com.felixgilioli.felixutils.collections;
+package io.github.felixgilioli.felixutils.collections;
 
 import java.util.Collection;
 import java.util.Collections;
