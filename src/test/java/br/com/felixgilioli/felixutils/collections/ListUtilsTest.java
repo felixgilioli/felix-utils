@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ListUtilsTest {
 
     @Test
-    @DisplayName("'filter' when the list passed is null")
-    void filterWhenListIsNull() {
+    @DisplayName("'filter' when the collection passed is null")
+    void filterWhenCollectionIsNull() {
         assertThrows(NullPointerException.class, () -> ListUtils.filter(null, o -> true));
     }
 
@@ -75,6 +75,40 @@ class ListUtilsTest {
         List<Integer> numbers = Arrays.asList(1, 2, 3);
         numbers = ListUtils.filter(numbers, n -> true);
 
+        assertEquals(Arrays.asList(1, 2, 3), numbers);
+    }
+
+    @Test
+    @DisplayName("'map' when the collection passed is null")
+    void mapWhenCollectionIsNull() {
+        assertThrows(NullPointerException.class, () -> ListUtils.map(null, o -> o));
+    }
+
+    @Test
+    @DisplayName("'map' when the mapper passed is null")
+    void mapWhenMapperIsNull() {
+        assertThrows(NullPointerException.class, () -> ListUtils.map(singletonList("Felix"), null));
+    }
+
+    @Test
+    @DisplayName("'map' when the collection passed is empty")
+    void mapWhenCollectionIsEmpty() {
+        assertTrue(ListUtils.map(emptyList(), o -> o).isEmpty());
+    }
+
+    @Test
+    @DisplayName("'map' with list of numbers in a string")
+    void mapWithListOfNumbersInAString() {
+        List<String> numbersInStringList = Arrays.asList("1", "2", "3");
+        List<Integer> numbers = ListUtils.map(numbersInStringList, Integer::valueOf);
+        assertEquals(Arrays.asList(1, 2, 3), numbers);
+    }
+
+    @Test
+    @DisplayName("'map' with set of numbers in a string")
+    void mapWithSetOfNumbersInAString() {
+        Set<String> numbersInStringList = new HashSet<>(Arrays.asList("1", "2", "3"));
+        List<Integer> numbers = ListUtils.map(numbersInStringList, Integer::valueOf);
         assertEquals(Arrays.asList(1, 2, 3), numbers);
     }
 }

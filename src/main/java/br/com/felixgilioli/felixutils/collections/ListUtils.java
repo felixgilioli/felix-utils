@@ -3,6 +3,7 @@ package br.com.felixgilioli.felixutils.collections;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -32,5 +33,23 @@ public class ListUtils {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Return a new list with the new elements.
+     * @param collection collection of elements.
+     * @param mapper new element.
+     * @return list with the new elements.
+     */
+    public static <T, S> List<T> map(Collection<S> collection, Function<S, T> mapper) {
+        requireNonNull(collection);
+        requireNonNull(mapper);
+
+        if (collection.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return collection.stream()
+                .map(mapper)
+                .collect(Collectors.toList());
+    }
 
 }
