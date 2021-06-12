@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -35,9 +37,18 @@ class ListUtilsTest {
     @DisplayName("'filter' odd numbers")
     void filterOddNumbers() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        numbers = ListUtils.filter(numbers, n -> n % 2 == 0);
+        numbers = ListUtils.filter(numbers, n -> n % 2 == 1);
 
-        assertEquals(Arrays.asList(2, 4, 6, 8, 10), numbers);
+        assertEquals(Arrays.asList(1, 3, 5, 7, 9), numbers);
+    }
+
+    @Test
+    @DisplayName("'filter' with Set of numbers")
+    void filterWithSetOfNumbers() {
+        Set<Integer> numbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        List<Integer> evenNumbers = ListUtils.filter(numbers, n -> n % 2 == 0);
+
+        assertEquals(Arrays.asList(2, 4, 6, 8, 10), evenNumbers);
     }
 
     @Test
