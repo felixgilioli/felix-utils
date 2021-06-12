@@ -24,7 +24,8 @@ class ListUtilsTest {
     @Test
     @DisplayName("'filter' when the condition passed is null")
     void filterWhenConditionIsNull() {
-        assertThrows(NullPointerException.class, () -> ListUtils.filter(singletonList("Felix"), null));
+        List<String> nameList = singletonList("Felix");
+        assertThrows(NullPointerException.class, () -> ListUtils.filter(nameList, null));
     }
 
     @Test
@@ -87,7 +88,8 @@ class ListUtilsTest {
     @Test
     @DisplayName("'map' when the mapper passed is null")
     void mapWhenMapperIsNull() {
-        assertThrows(NullPointerException.class, () -> ListUtils.map(singletonList("Felix"), null));
+        List<String> nameList = singletonList("Felix");
+        assertThrows(NullPointerException.class, () -> ListUtils.map(nameList, null));
     }
 
     @Test
