@@ -14,6 +14,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class ListUtils {
 
+    private ListUtils() {}
+
     /**
      * Return a new list with the filtered elements.
      * @param collection collection of elements.
