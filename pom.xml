@@ -7,6 +7,11 @@
     <groupId>io.github.felixgilioli</groupId>
     <artifactId>felix-utils</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>felix-utils</name>
+    <description>felix-utils is a project with several utilitarian methods.</description>
+    <url>https://github.com/felixgilioli/felix-utils</url>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
