@@ -120,7 +120,7 @@ class ListUtilsTest {
     @Test
     @DisplayName("'findFirst' when the condition passed is null")
     void findFirstWhenConditionIsNull() {
-        assertThrows(NullPointerException.class, () -> ListUtils.findFirst(new ArrayList<>(), null));
+        assertThrows(NullPointerException.class, () -> ListUtils.findFirst(emptyList(), null));
     }
 
     @Test
