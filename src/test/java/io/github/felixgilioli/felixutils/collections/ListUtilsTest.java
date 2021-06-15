@@ -3,10 +3,7 @@ package io.github.felixgilioli.felixutils.collections;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -112,5 +109,24 @@ class ListUtilsTest {
         Set<String> numbersInStringList = new HashSet<>(Arrays.asList("1", "2", "3"));
         List<Integer> numbers = ListUtils.map(numbersInStringList, Integer::valueOf);
         assertEquals(Arrays.asList(1, 2, 3), numbers);
+    }
+
+    @Test
+    @DisplayName("'findFirst' when the collection passed is null")
+    void findFirstWhenCollectionIsNull() {
+        assertThrows(NullPointerException.class, () -> ListUtils.findFirst(null, o -> true));
+    }
+
+    @Test
+    @DisplayName("'findFirst' when the condition passed is null")
+    void findFirstWhenConditionIsNull() {
+        assertThrows(NullPointerException.class, () -> ListUtils.findFirst(emptyList(), null));
+    }
+
+    @Test
+    @DisplayName("'findFirst' when the collection passed is empty")
+    void findFirstWhenCollectionIsEmpty() {
+        final Optional<Object> firstObject = ListUtils.findFirst(emptyList(), o -> true);
+        assertFalse(firstObject.isPresent());
     }
 }
