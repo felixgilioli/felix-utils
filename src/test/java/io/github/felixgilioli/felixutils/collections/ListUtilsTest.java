@@ -129,4 +129,41 @@ class ListUtilsTest {
         final Optional<Object> firstObject = ListUtils.findFirst(emptyList(), o -> true);
         assertFalse(firstObject.isPresent());
     }
+
+    @Test
+    @DisplayName("'findFirst' name that start with 'F'")
+    void findFirstNameThatStartWithF() {
+        List<String> names = Arrays.asList("Daiane", "Felix", "João", "Maria");
+        final Optional<String> firstObject = ListUtils.findFirst(names, name -> name.startsWith("F"));
+        assertTrue(firstObject.isPresent());
+        assertEquals("Felix", firstObject.get());
+    }
+
+    @Test
+    @DisplayName("'findFirst' name that start with 'D'")
+    void findFirstNameThatStartWithD() {
+        List<String> names = Arrays.asList("Daiane", "Felix", "João", "Maria", "Daniela");
+        final Optional<String> firstObject = ListUtils.findFirst(names, name -> name.startsWith("D"));
+        assertTrue(firstObject.isPresent());
+        assertEquals("Daiane", firstObject.get());
+    }
+
+
+    @Test
+    @DisplayName("'findFirst' when not found element")
+    void findFirstWhenNotFoundElement() {
+        List<String> names = Arrays.asList("Daiane", "Felix", "João", "Maria", "Daniela");
+        final Optional<String> firstObject = ListUtils.findFirst(names, name -> name.startsWith("X"));
+        assertFalse(firstObject.isPresent());
+    }
+
+    @Test
+    @DisplayName("'findFirst' with a set of size one")
+    void findFirstWithASetOfSizeOne() {
+        Set<String> names = new HashSet<>();
+        names.add("Felix");
+        final Optional<String> firstObject = ListUtils.findFirst(names, name -> name.startsWith("F"));
+        assertTrue(firstObject.isPresent());
+        assertEquals("Felix", firstObject.get());
+    }
 }
