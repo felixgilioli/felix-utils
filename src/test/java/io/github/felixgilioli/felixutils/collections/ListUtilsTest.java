@@ -166,4 +166,5 @@ class ListUtilsTest {
         assertTrue(firstObject.isPresent());
         assertEquals("Felix", firstObject.get());
     }
+
 }
