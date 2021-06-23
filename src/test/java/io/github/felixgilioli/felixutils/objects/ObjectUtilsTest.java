@@ -72,7 +72,7 @@ class ObjectUtilsTest {
     void checkArgumentWithMessageWhenConditionIsFalse() {
         final String defaultMessage = "name must be start with 'X'";
         try {
-            ObjectUtils.checkArgument("Felix", s -> s.startsWith("X"), defaultMessage);
+            ObjectUtils.checkArgument("Felix", s -> !s.startsWith("X"), defaultMessage);
             fail();
         } catch (IllegalArgumentException e) {
             assertEquals(defaultMessage, e.getMessage());
@@ -83,7 +83,7 @@ class ObjectUtilsTest {
     @DisplayName("'checkArgument with message' when the condition passed is true")
     void checkArgumentWithMessageWhenConditionIsTrue() {
         final String defaultMessage = "name must be start with 'F'";
-        final String name = ObjectUtils.checkArgument("Felix", s -> s.startsWith("F"), defaultMessage);
+        final String name = ObjectUtils.checkArgument("Felix", s -> !s.startsWith("F"), defaultMessage);
         assertEquals("Felix", name);
     }
 

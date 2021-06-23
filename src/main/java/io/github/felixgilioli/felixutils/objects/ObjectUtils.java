@@ -41,7 +41,7 @@ public class ObjectUtils {
         Objects.requireNonNull(obj, message);
         Objects.requireNonNull(condition);
 
-        if (!condition.test(obj)) {
+        if (condition.test(obj)) {
             throw new IllegalArgumentException(message);
         }
 
