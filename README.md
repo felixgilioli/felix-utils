@@ -59,7 +59,7 @@ if you want to include the library in your project, you can do this by adding th
 <dependency>
   <groupId>io.github.felixgilioli</groupId>
   <artifactId>felix-utils</artifactId>
-  <version>1.1.1</version>
+  <version>1.2.1</version>
 </dependency>
 ```
 
