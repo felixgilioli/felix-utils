@@ -23,6 +23,7 @@ public class StringUtils {
      * @return true if the string is not null, not empty and not whitespace only.
      */
     public static boolean isNotBlank(String s) {
-        return s != null && !s.trim().isEmpty();
+        return !isBlank(s);
     }
+
 }
